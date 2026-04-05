@@ -1,0 +1,29 @@
+D:\SchoolApp\
+│
+├── .expo 
+├── app
+│   ├── (tabs)
+│   │   ├── _layout.tsx
+│   │   ├── attendance.tsx
+│   │   ├── index.tsx
+│   │   ├── monthlyattendance.tsx
+│   │   ├── profile.tsx
+│   │   ├── routine.tsx
+│   │   └── students.tsx
+│   ├── student
+│   │   └── [id].tsx
+│   ├── _layout.tsx
+│   ├── index.tsx
+│   └── login.tsx
+├── assets
+│   └── images
+├── src
+│   ├── context
+│   │   └── AuthContext.tsx
+│   └── services
+│       └── api.ts
+├── app.json
+├── eslint.config.js
+├── expo-env.d.ts
+├── package.json
+└── tsconfig.json
