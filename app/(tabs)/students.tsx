@@ -35,7 +35,7 @@ interface Student {
   session_name: string;
 }
 
-const API_BASE = "http://192.168.68.100:8000"; // same as api.ts
+const API_BASE = "http://34.177.86.52"; // same as in api.ts
 
 export default function StudentsScreen() {
   const { user } = useAuth();
@@ -70,7 +70,7 @@ export default function StudentsScreen() {
     setLoadingSections(true);
     try {
       const res = await api.get(
-        `/api/v1/routine/routines/?teacher=${user?.teacher_id}`,
+        `/routine/routines/?teacher=${user?.teacher_id}`,
       );
       const routines = res.data.results || res.data;
       const seen = new Set<string>();
@@ -104,7 +104,7 @@ export default function StudentsScreen() {
     setLoading(true);
     try {
       const res = await api.get(
-        `/api/v1/students/?school_class=${cs.classId}&section=${cs.sectionId}`,
+        `/students/?school_class=${cs.classId}&section=${cs.sectionId}`,
       );
       const list = res.data.results || res.data;
       setStudents(list);

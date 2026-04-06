@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const refresh = await AsyncStorage.getItem("refresh_token");
       if (refresh) {
-        const res = await api.post("/api/token/refresh/", { refresh });
+        const res = await api.post("/token/refresh/", { refresh });
         const newAccess = res.data.access;
         await AsyncStorage.setItem("access_token", newAccess);
         const decoded = jwtDecode<TokenPayload>(newAccess);
@@ -103,7 +103,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const login = async (username: string, password: string) => {
-    const res = await api.post("/api/token/", { username, password });
+    const res = await api.post("/token/", { username, password });
     const { access, refresh } = res.data;
     await AsyncStorage.setItem("access_token", access);
     await AsyncStorage.setItem("refresh_token", refresh);

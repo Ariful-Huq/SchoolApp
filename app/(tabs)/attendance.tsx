@@ -65,7 +65,7 @@ export default function AttendanceScreen() {
     try {
       // Get all routine entries for this teacher
       const res = await api.get(
-        `/api/v1/routine/routines/?teacher=${user?.teacher_id}&period=1`,
+        `/routine/routines/?teacher=${user?.teacher_id}&period=1`,
       );
       const routines = res.data.results || res.data; // handle pagination
 
@@ -80,7 +80,7 @@ export default function AttendanceScreen() {
           unique.push({
             classId: r.school_class,
             sectionId: r.section,
-            className: r.school_class_name || `Class ${r.school_class}`,
+            className: r.class_name || `Class ${r.school_class}`,
             sectionName: r.section_name || `Section ${r.section}`,
           });
         }
@@ -100,7 +100,7 @@ export default function AttendanceScreen() {
     setLoading(true);
     try {
       const res = await api.get(
-        `/api/v1/students/?school_class=${cs.classId}&section=${cs.sectionId}`,
+        `/students/?school_class=${cs.classId}&section=${cs.sectionId}`,
       );
       const studentList = res.data.results || res.data; // ← handle pagination
 
@@ -144,7 +144,7 @@ export default function AttendanceScreen() {
         section_id: selectedCS!.sectionId,
       }));
 
-      await api.post("/api/v1/attendance/bulk-mark/", {
+      await api.post("/attendance/bulk-mark/", {
         date: today,
         attendance_list,
       });

@@ -28,7 +28,7 @@ interface TeacherProfile {
   assigned_subjects: string[];
 }
 
-const API_BASE = "http://192.168.68.100:8000";
+const API_BASE = "http://34.177.86.52"; // Same as in api.ts
 
 const getPhotoUrl = (photo: string | null) => {
   if (!photo) return null;
@@ -58,7 +58,7 @@ export default function ProfileScreen() {
   const fetchProfile = async () => {
     setLoading(true);
     try {
-      const res = await api.get(`/api/v1/teachers/${user?.teacher_id}/`);
+      const res = await api.get(`/teachers/${user?.teacher_id}/`);
       setProfile(res.data);
     } catch {
       Alert.alert("Error", "Could not load profile");

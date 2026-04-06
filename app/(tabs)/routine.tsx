@@ -2,13 +2,13 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { useAuth } from "../../src/context/AuthContext";
 import api from "../../src/services/api";
@@ -97,7 +97,7 @@ export default function RoutineScreen() {
     setLoading(true);
     try {
       const res = await api.get(
-        `/api/v1/routine/routines/?teacher=${user?.teacher_id}`,
+        `/routine/routines/?teacher=${user?.teacher_id}`,
       );
       const data = res.data.results || res.data;
       setRoutine(data);

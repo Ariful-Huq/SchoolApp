@@ -27,7 +27,7 @@ interface Student {
   session_name: string;
 }
 
-const API_BASE = "http://192.168.68.100:8000";
+const API_BASE = "http://34.177.86.52"; // Same as in api.ts
 
 const getPhotoUrl = (photo: string | null) => {
   if (!photo) return null;
@@ -48,7 +48,7 @@ export default function StudentProfileScreen() {
   const fetchStudent = async () => {
     setLoading(true);
     try {
-      const res = await api.get(`/api/v1/students/${id}/`);
+      const res = await api.get(`/students/${id}/`);
       setStudent(res.data);
     } catch {
       Alert.alert("Error", "Could not load student profile");

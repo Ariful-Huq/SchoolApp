@@ -1,3 +1,4 @@
+// SchoolApp/src/services/api.ts
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
@@ -5,6 +6,7 @@ const API_BASE_URL = "http://34.177.86.52/api/v1";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 10000,
   headers: { "Content-Type": "application/json" },
 });
 
@@ -25,7 +27,7 @@ api.interceptors.response.use(
       try {
         const refresh = await AsyncStorage.getItem("refresh_token");
         if (refresh) {
-          const res = await axios.post(`${API_BASE_URL}/api/token/refresh/`, {
+          const res = await axios.post(`${API_BASE_URL}/token/refresh/`, {
             refresh,
           });
           const newAccess = res.data.access;

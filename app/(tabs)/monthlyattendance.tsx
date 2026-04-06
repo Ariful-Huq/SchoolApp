@@ -1,3 +1,4 @@
+// SchoolApp/app/(tabs)/monthlyattendance.tsx
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
@@ -77,7 +78,7 @@ export default function MonthlyAttendanceScreen() {
     setLoadingSections(true);
     try {
       const res = await api.get(
-        `/api/v1/routine/routines/?teacher=${user?.teacher_id}&period=1`,
+        `/routine/routines/?teacher=${user?.teacher_id}&period=1`,
       );
       const routines = res.data.results || res.data;
       const seen = new Set<string>();
@@ -109,7 +110,7 @@ export default function MonthlyAttendanceScreen() {
     setData([]);
     try {
       const res = await api.get(
-        `/api/v1/attendance/monthly/?year=${year}&month=${month}&class_id=${selectedCS.classId}&section_id=${selectedCS.sectionId}`,
+        `/attendance/monthly/?year=${year}&month=${month}&class_id=${selectedCS.classId}&section_id=${selectedCS.sectionId}`,
       );
       setData(res.data);
     } catch {
