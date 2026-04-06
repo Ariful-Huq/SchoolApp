@@ -2,14 +2,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    Image,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { useAuth } from "../../src/context/AuthContext";
 import api from "../../src/services/api";
@@ -28,7 +28,7 @@ interface TeacherProfile {
   assigned_subjects: string[];
 }
 
-const API_BASE = "http://192.168.0.108:8000";
+const API_BASE = "http://192.168.68.100:8000";
 
 const getPhotoUrl = (photo: string | null) => {
   if (!photo) return null;
