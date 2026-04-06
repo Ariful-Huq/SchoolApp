@@ -13,7 +13,6 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import api from "../../src/services/api";
 
 interface Student {
@@ -25,14 +24,31 @@ interface Student {
   class_name: string;
   section_name: string;
   session_name: string;
+  father_name: string | null;
+  father_contact: string | null;
+  mother_name: string | null;
+  mother_contact: string | null;
+  date_of_birth: string | null;
+  religion: string | null;
+  address: string | null;
 }
 
-const API_BASE = "http://34.177.86.52"; // Same as in api.ts
+const API_BASE = "http://34.177.86.52";
 
 const getPhotoUrl = (photo: string | null) => {
   if (!photo) return null;
   if (photo.startsWith("http")) return photo;
   return `${API_BASE}${photo}`;
+};
+
+const formatDate = (dateStr: string | null) => {
+  if (!dateStr) return "N/A";
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 };
 
 export default function StudentProfileScreen() {
@@ -153,6 +169,108 @@ export default function StudentProfileScreen() {
             <View style={styles.infoContent}>
               <Text style={styles.infoLabel}>Student System ID</Text>
               <Text style={styles.infoValue}>#{student.id}</Text>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#fff7ed" }]}>
+              <Ionicons
+                name="calendar-number-outline"
+                size={18}
+                color="#ea580c"
+              />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Date of Birth</Text>
+              <Text style={styles.infoValue}>
+                {formatDate(student.date_of_birth)}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#fdf4ff" }]}>
+              <Ionicons name="moon-outline" size={18} color="#a21caf" />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Religion</Text>
+              <Text style={styles.infoValue}>{student.religion || "N/A"}</Text>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#f0fdf4" }]}>
+              <Ionicons name="location-outline" size={18} color="#16a34a" />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Address</Text>
+              <Text style={styles.infoValue}>{student.address || "N/A"}</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+
+      {/* Parents Info */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Parent Information</Text>
+        <View style={styles.infoCard}>
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#eff6ff" }]}>
+              <Ionicons name="person-outline" size={18} color="#1e3a8a" />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Father's Name</Text>
+              <Text style={styles.infoValue}>
+                {student.father_name || "N/A"}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#f0fdf4" }]}>
+              <Ionicons name="call-outline" size={18} color="#16a34a" />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Father's Contact</Text>
+              <Text style={styles.infoValue}>
+                {student.father_contact || "N/A"}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#fdf2f8" }]}>
+              <Ionicons name="person-outline" size={18} color="#be185d" />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Mother's Name</Text>
+              <Text style={styles.infoValue}>
+                {student.mother_name || "N/A"}
+              </Text>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.infoRow}>
+            <View style={[styles.infoIconBox, { backgroundColor: "#fff7ed" }]}>
+              <Ionicons name="call-outline" size={18} color="#ea580c" />
+            </View>
+            <View style={styles.infoContent}>
+              <Text style={styles.infoLabel}>Mother's Contact</Text>
+              <Text style={styles.infoValue}>
+                {student.mother_contact || "N/A"}
+              </Text>
             </View>
           </View>
         </View>
