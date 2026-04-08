@@ -35,7 +35,7 @@ interface Student {
   session_name: string;
 }
 
-const API_BASE = "http://34.177.86.52"; // same as in api.ts
+const API_BASE = "http://192.168.68.100"; // same as in api.ts
 
 export default function StudentsScreen() {
   const { user } = useAuth();

@@ -28,7 +28,7 @@ interface TeacherProfile {
   assigned_subjects: string[];
 }
 
-const API_BASE = "http://34.177.86.52"; // Same as in api.ts
+const API_BASE = "http://192.168.68.100"; // Same as in api.ts
 
 const getPhotoUrl = (photo: string | null) => {
   if (!photo) return null;

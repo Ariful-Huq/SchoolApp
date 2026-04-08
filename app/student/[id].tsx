@@ -33,7 +33,7 @@ interface Student {
   address: string | null;
 }
 
-const API_BASE = "http://34.177.86.52";
+const API_BASE = "http://192.168.68.100";
 
 const getPhotoUrl = (photo: string | null) => {
   if (!photo) return null;

@@ -22,6 +22,7 @@ D:\SchoolApp\
 │   │   └── AuthContext.tsx
 │   └── services
 │       └── api.ts
+├── .gitignore
 ├── app.json
 ├── eslint.config.js
 ├── expo-env.d.ts
